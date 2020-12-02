@@ -1,4 +1,4 @@
-import { StatusFilters  } from "../filters/filtersSlice";
+import { STATUS_FILTERS } from '../../constants';
 import { client } from "../../api/client";
 
 const initialState =  [];
@@ -7,7 +7,7 @@ export const selectTodoIds = (state)=>{
     let todos = state.todos;
     let {status, colors} = state.filters;
     let filteredTodos = todos.filter((todo)=>{
-        if(status === StatusFilters.All || (status === StatusFilters.Active && !todo.completed) || (status === StatusFilters.Completed && todo.completed)){
+        if(status === STATUS_FILTERS.All || (status === STATUS_FILTERS.Active && !todo.completed) || (status === STATUS_FILTERS.Completed && todo.completed)){
             if(!colors.length || (todo.color && colors.includes(todo.color))){
                 return true;
             }

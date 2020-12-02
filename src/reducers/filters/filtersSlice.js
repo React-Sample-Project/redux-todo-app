@@ -1,13 +1,8 @@
 
-
-export const StatusFilters = {
-    All: 'all',
-    Active: 'active',
-    Completed: 'completed',
-}
+import { STATUS_FILTERS } from "../../constants";
 
 const initialState = {
-    status: StatusFilters.All,
+    status: STATUS_FILTERS.All,
     colors: []
 }
 

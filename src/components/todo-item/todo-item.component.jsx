@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { ReactComponent as CancelSVG } from './cancel.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { availableColors, capitalize } from "../../reducers/filters/colors";
+import { AVAILABLE_COLORS, capitalize } from '../../constants';
+
 
 export default function TodoItem({id}) {
     let {text, completed, color} = useSelector(state => state.todos.find((todo) => todo.id === id));
@@ -56,7 +57,7 @@ const ColorSelector = ({value, todoId}) =>{
     return (
         <select value={value}  className="colorPicker" onChange={handleChange}>
             <option></option>
-            {availableColors.map((color)=>{
+            {AVAILABLE_COLORS.map((color)=>{
                 return <option key={color} value={color}>{capitalize(color)}</option>
             })}
         </select>

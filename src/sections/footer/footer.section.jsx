@@ -1,8 +1,6 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {availableColors, capitalize} from '../../reducers/filters/colors';
-import { StatusFilters } from '../../reducers/filters/filtersSlice';
-
+import { STATUS_FILTERS, AVAILABLE_COLORS, capitalize } from '../../constants';
 
 const Actions = ()=>{
     let dispatch = useDispatch();
@@ -51,8 +49,8 @@ const StatusFilter = ()=>{
             <h5>Filter by  Status</h5>
             <ul>
                 {
-                    Object.keys(StatusFilters).map((filterKey)=>{
-                        let filterName = StatusFilters[filterKey];
+                    Object.keys(STATUS_FILTERS).map((filterKey)=>{
+                        let filterName = STATUS_FILTERS[filterKey];
                         return (
                             <li key={filterKey}>
                                 <button onClick={(e)=>handleStatusSelection(e, filterName)} className={(filterName === currentStatusFilter) ? "selected":""}>{capitalize(filterName)}</button>
@@ -79,7 +77,7 @@ const ColorFilters = ()=>{
         <div className="filters colorFilters">
             <h5> Filter by Status </h5>
             <form className="colorSelection">
-                {availableColors.map((color)=>{
+                {AVAILABLE_COLORS.map((color)=>{
                     return (
                         <label key={color}>
                             <input type="checkbox" checked={colors.includes(color)}  name={color} onChange={onSelectionChange}/>
